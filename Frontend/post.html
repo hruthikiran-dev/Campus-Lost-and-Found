@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post Item | Campus L&F</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">📦 Campus <span>L&F</span></a>
+    <div class="nav-links">
+      <a href="index.html">Browse</a>
+      <a href="post.html">Post Item</a>
+      <button id="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="post-page-container">
+    <h2>Post an Item</h2>
+    <p class="post-page-subtitle">Help someone find their lost item, or claim what you found.</p>
+
+    <input type="hidden" id="item-type" value="lost" />
+
+    <div class="tab-buttons">
+      <button class="tab lost-tab active" onclick="setType('lost', this)">😢 I Lost Something</button>
+      <button class="tab found-tab" onclick="setType('found', this)">🎉 I Found Something</button>
+    </div>
+
+    <div class="form-container" style="margin:0; max-width:100%;">
+      <label>Item Title *</label>
+      <input type="text" id="title" placeholder="e.g., Blue water bottle with stickers" />
+
+      <label>Description *</label>
+      <textarea id="description" rows="4" placeholder="Describe the item in detail — colour, brand, any markings..."></textarea>
+
+      <label>Category *</label>
+      <select id="category">
+        <option value="Electronics">Electronics</option>
+        <option value="Stationery">Stationery</option>
+        <option value="Clothing">Clothing</option>
+        <option value="ID/Cards">ID/Cards</option>
+        <option value="Keys">Keys</option>
+        <option value="Bag">Bag</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label>Location *</label>
+      <input type="text" id="location" placeholder="e.g., Library 2nd floor, Canteen, Block B..." />
+
+      <label>Your Contact Email *</label>
+      <input type="email" id="contactEmail" placeholder="your@email.com" />
+
+      <label>Photo (optional)</label>
+      <div class="file-input-wrapper">
+        <label class="file-input-label" for="image">
+          📷 <span id="file-label-text">Click to upload a photo</span>
+        </label>
+        <input type="file" id="image" accept="image/*" onchange="updateFileLabel(this)" />
+      </div>
+
+      <button class="btn-primary" id="post-btn" onclick="postItem()">Post Item →</button>
+      <p id="post-message" class="message"></p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    if (!localStorage.getItem('token')) {
+      window.location.href = 'login.html';
+    }
+    updateNav();
+
+    function setType(type, btn) {
+      document.getElementById('item-type').value = type;
+      document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    function updateFileLabel(input) {
+      const label = document.getElementById('file-label-text');
+      label.textContent = input.files[0] ? input.files[0].name : 'Click to upload a photo';
+    }
+  </script>
+</body>
+</html>

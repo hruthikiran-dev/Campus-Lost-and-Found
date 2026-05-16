@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Lost & Found</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">📦 Campus <span>L&F</span></a>
+    <div class="nav-links">
+      <a href="index.html">Browse</a>
+      <a href="post.html">Post Item</a>
+      <span id="auth-links" style="display:flex; align-items:center;">
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+      </span>
+      <button id="logout-btn" style="display:none" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-tag">✦ Your Campus Community</div>
+    <h1>Lost something?<br><span class="highlight">We'll find it.</span></h1>
+    <p>A digital lost & found for your campus. Post what you found, search for what you lost — reunite in minutes.</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num" id="total-count">—</span>
+        <span class="stat-label">Items Posted</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" id="lost-count">—</span>
+        <span class="stat-label">Lost</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" id="found-count">—</span>
+        <span class="stat-label">Found</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="filters">
+      <select id="filter-type">
+        <option value="">All Items</option>
+        <option value="lost">Lost</option>
+        <option value="found">Found</option>
+      </select>
+      <select id="filter-category">
+        <option value="">All Categories</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Stationery">Stationery</option>
+        <option value="Clothing">Clothing</option>
+        <option value="ID/Cards">ID/Cards</option>
+        <option value="Keys">Keys</option>
+        <option value="Bag">Bag</option>
+        <option value="Other">Other</option>
+      </select>
+      <input type="text" id="search-input" placeholder="🔍  Search by name, location..." />
+      <button onclick="loadItems()">Search</button>
+    </div>
+
+    <div class="section-label">Recent Items</div>
+
+    <div id="items-grid" class="items-grid">
+      <div class="empty-state">
+        <div class="empty-icon">🔄</div>
+        <p>Loading items...</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    loadItems();
+    updateNav();
+    loadStats();
+  </script>
+</body>
+</html>

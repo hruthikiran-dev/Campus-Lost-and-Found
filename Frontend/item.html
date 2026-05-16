@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Item Detail | Campus L&F</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .detail-card {
+      max-width: 700px;
+      margin: 3rem auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      animation: fadeUp 0.4s ease both;
+    }
+    .detail-image {
+      width: 100%;
+      max-height: 380px;
+      object-fit: cover;
+      display: block;
+    }
+    .detail-no-image {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg3);
+      font-size: 4rem;
+      color: var(--text3);
+    }
+    .detail-body { padding: 2rem 2.5rem 2.5rem; }
+    .detail-top {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .detail-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    .detail-desc {
+      font-size: 1rem;
+      color: var(--text2);
+      line-height: 1.7;
+      margin-bottom: 1.75rem;
+      font-weight: 300;
+    }
+    .detail-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 1.75rem;
+      padding: 1.25rem;
+      background: var(--bg2);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .detail-meta-row {
+      display: flex;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--text2);
+      align-items: flex-start;
+    }
+    .detail-meta-row a {
+      color: var(--accent2);
+      text-decoration: none;
+    }
+    .detail-meta-row a:hover { text-decoration: underline; }
+    .detail-status {
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+    }
+    .detail-status.active {
+      background: var(--found-bg);
+      color: var(--found);
+      border: 1px solid rgba(52,215,154,0.2);
+    }
+    .detail-status.resolved {
+      background: var(--surface2);
+      color: var(--text3);
+      border: 1px solid var(--border);
+    }
+    .btn-resolve {
+      display: block;
+      width: 100%;
+      padding: 0.85rem;
+      background: var(--found-bg);
+      color: var(--found);
+      border: 1px solid rgba(52,215,154,0.3);
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      margin-bottom: 0.75rem;
+      transition: all 0.2s;
+    }
+    .btn-resolve:hover {
+      background: rgba(52,215,154,0.2);
+      transform: translateY(-1px);
+    }
+    .btn-back {
+      display: block;
+      text-align: center;
+      padding: 0.85rem;
+      background: var(--surface2);
+      color: var(--text2);
+      border: 1px solid var(--border2);
+      border-radius: 10px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-back:hover { color: var(--text); background: var(--bg3); }
+
+    @media (max-width: 768px) {
+      .detail-card { margin: 1.5rem 1rem; }
+      .detail-body { padding: 1.5rem; }
+      .detail-title { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">📦 Campus <span>L&F</span></a>
+    <div class="nav-links">
+      <a href="index.html">Browse</a>
+      <a href="post.html">Post Item</a>
+      <span id="auth-links" style="display:flex; align-items:center;">
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+      </span>
+      <button id="logout-btn" style="display:none" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div id="item-detail">
+      <div class="empty-state">
+        <div class="empty-icon">🔄</div>
+        <p>Loading item...</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    updateNav();
+    loadItemDetail();
+  </script>
+</body>
+</html>

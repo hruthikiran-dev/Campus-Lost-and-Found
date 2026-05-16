@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Campus L&F</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">📦 Campus <span>L&F</span></a>
+    <div class="nav-links">
+      <a href="index.html">Browse</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </div>
+  </nav>
+
+  <div class="form-center">
+    <div class="form-container">
+      <div class="form-icon">👋</div>
+      <h2>Welcome back</h2>
+      <p class="form-subtitle">Login to post or manage your items</p>
+
+      <label>Email</label>
+      <input type="email" id="email" placeholder="your@email.com" />
+
+      <label>Password</label>
+      <input type="password" id="password" placeholder="Your password" />
+
+      <button class="btn-primary" onclick="login()">Login →</button>
+      <p id="login-message" class="message"></p>
+
+      <p class="auth-footer">
+        No account yet? <a href="register.html">Register here</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
