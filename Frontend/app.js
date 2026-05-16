@@ -1,5 +1,4 @@
-const BASE_URL = 'http://localhost:4321/api';
-
+const BASE_URL = 'https://campus-lost-and-found-g6bi.onrender.com/api';
 // ── AUTH ──────────────────────────────────────
 
 async function register() {
