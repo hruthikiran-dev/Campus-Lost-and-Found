@@ -13,7 +13,12 @@ const generateToken = (userId) => {
 router.post('/register', async (req, res) => {
   try {
     const { name, email, password } = req.body;
-
+    // Domain restriction
+    if (!email.endsWith('@student.vardhaman.org')) {
+      return res.status(403).json({
+        message: 'Only @student.vardhaman.org emails are allowed to register.'
+      });
+    }
     // Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
